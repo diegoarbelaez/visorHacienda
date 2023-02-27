@@ -36,7 +36,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputCity" class="col-form-label">Cédula</label>
-                                    <input type="text" class="form-control" name="cedula" id="cedula">
+                                    <input type="text" class="form-control" name="cedula" id="cedula" value="94287419">
                                 </div>
                             </div>
                             <div class="form-row">
@@ -46,8 +46,8 @@
                     </div>
                 </div>
                 <div class="col-xl-6">
-                    <div class="card-box">Resultados:</h4>
-                        <p id="resultado">Aqui el nombre</p>
+                    <div id="div_resultados" class="card-box">Resultados:</h4>
+                        <!-- Aqui los resultados -->
                     </div>
                 </div>
 
@@ -57,9 +57,18 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card-box">
-                        <h4 class="header-title mb-3">Messages</h4>
+                        <h4 class="header-title mb-3">BD Alcaldía</h4>
 
                         <div class="inbox-widget slimscroll" style="max-height: 370px;">
+                            <div class="inbox-item" id="resultados_pandemia">
+                                <div class="inbox-item-img"><img src="assets/images/users/avatar-1.jpg" class="rounded-circle bx-shadow-lg" alt=""></div>
+                                <p class="inbox-item-author">Chadengle</p>
+                                <p class="inbox-item-text">Hey! there I'm available...</p>
+                                <p class="inbox-item-date">13:40 PM</p>
+                            </div>
+                        </div>
+
+                        <!-- <div class="inbox-widget slimscroll" style="max-height: 370px;">
                             <a href="#">
                                 <div class="inbox-item">
                                     <div class="inbox-item-img"><img src="assets/images/users/avatar-1.jpg" class="rounded-circle bx-shadow-lg" alt=""></div>
@@ -124,13 +133,14 @@
                                     <p class="inbox-item-date">9:56 AM</p>
                                 </div>
                             </a>
-                        </div>
+                        </div>-->
+
 
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="card-box">
-                        <h4 class="header-title mb-3">Latest Comments</h4>
+                        <h4 class="header-title mb-3">BD Visitantes</h4>
 
                         <div class="comment-list slimscroll" style="max-height: 370px;">
                             <a href="#">
@@ -172,7 +182,7 @@
 
                 <div class="col-lg-4">
                     <div class="card-box">
-                        <h4 class="header-title mb-3">Last Transactions</h4>
+                        <h4 class="header-title mb-3">Cruces BD</h4>
 
                         <ul class="list-unstyled transaction-list slimscroll mb-0" style="max-height: 370px;">
                             <li>
@@ -269,5 +279,5 @@
 
     <?php include('pie.php') ?>
 
-   
+
 </div>
