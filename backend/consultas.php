@@ -29,6 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $filas_predial[] = $valor;
         }
 
+        //Calcula el valor de la deuda del predial
+        $sentencia_deuda = "SELECT SUM(`Valor a Pagar Vigencia`) as deuda from febrero_2023 where `No Identificacion` = $cedula_consultar";
+        $resultado_deuda = mysqli_query($con,$sentencia_deuda);
+        $filas = mysqli_fetch_assoc($resultado_deuda);
+        $deuda = $filas["deuda"];
+
         //Busqueda en la BD de pandemia
         $sentencia1 = "select cedula,nombres, apellidos, telefono, casa.direccion from ciudadano inner join casa on ciudadano.fk_id_casa = casa.id_casa where cedula = '$cedula_consultar'";
         $resultado1 = mysqli_query($con, $sentencia1);
@@ -67,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $objeto->emsanar = $num_res2;
         $objeto->permisos = $num_res3;
         $objeto->predial = $num_predial;
+        $objeto->valordeuda = $deuda;
 
         echo json_encode(array('resultados' => $objeto, 'predial'=>$filas_predial , 'pandemia' => $filas1, 'emsanar' => $filas2, 'permisos' => $filas3));
         http_response_code(200);

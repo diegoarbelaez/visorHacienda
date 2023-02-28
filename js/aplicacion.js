@@ -35,6 +35,7 @@ formulario_consulta.addEventListener("submit", function consultar(e) {
         resultados1.innerHTML = `<p>
         <h4>Nombre Contribuyente: </h4><span id="nombre_usuario">${propietario}</span>
         <h4>Cantidad propiedades registradas: </h4><span id="nombre_usuario">${cantidad_propiedades}</span>
+        <h3>Valor de la Deuda:</h3><h3><span>$${parseInt(data.resultados.valordeuda).toLocaleString()}</span></h3>
       </p>`;
       }
 
@@ -113,7 +114,7 @@ formulario_consulta.addEventListener("submit", function consultar(e) {
         //Formatear los valores
         const opcionesFormato = {
           style: "currency",
-          currency: "EUR",
+          currency: "COP",
           minimumFractionDigits: 2,
           useGrouping: true,
           currencyDisplay: "symbol",
@@ -124,7 +125,8 @@ formulario_consulta.addEventListener("submit", function consultar(e) {
         let datosDivPropiedades = document.querySelector("#resultados_propiedades");
         datos.map((elemento) => {
 
-          let avaluo = elemento["Avaluo Actual"].toLocaleString("es-ES",opcionesFormato);
+          let avaluo = parseInt(elemento["Avaluo Actual"]).toLocaleString("es-ES",opcionesFormato);
+          console.log(avaluo);
 
           datosDivPropiedades.innerHTML += `
           <div class="col-6">
@@ -133,10 +135,10 @@ formulario_consulta.addEventListener("submit", function consultar(e) {
           <span class="text-danger">Area Construida:</span> ${elemento["Area Construida"]}<br>
           <span class="text-danger">Area Metros:</span> ${elemento["Area Metros"]}<br>
           <span class="text-danger">Avaluo Actual:</span> ${avaluo}<br>
-          <span class="text-danger">Descuento Periodo:</span> ${elemento["Descuento Periodo"].toLocaleString()}<br>
-          <span class="text-danger">Descuento Vigencia:</span> ${elemento["Descuento Vigencia"].toLocaleString()}<br>
-          <span class="text-danger">Deuda Periodo:</span> ${elemento["Deuda Periodo"].toLocaleString()}<br>
-          <span class="text-danger">Deuda Vigencia:</span> ${elemento["Deuda Vigencia"]}<br>
+          <span class="text-danger">Descuento Periodo:</span> ${parseInt(elemento["Descuento Periodo"]).toLocaleString()}<br>
+          <span class="text-danger">Descuento Vigencia:</span> ${parseInt(elemento["Descuento Vigencia"]).toLocaleString()}<br>
+          <span class="text-danger">Deuda Periodo:</span> ${parseInt(elemento["Deuda Periodo"]).toLocaleString()}<br>
+          <span class="text-danger">Deuda Vigencia:</span> ${parseInt(elemento["Deuda Vigencia"]).toLocaleString()}<br>
           <span class="text-danger">Direccion:</span> ${elemento["Direccion"]}<br>
           <span class="text-danger">Fecha Elaboracion:</span> ${elemento["Fecha Elaboracion"]}<br>
           <span class="text-danger">Fecha Vencimiento:</span> ${elemento["Fecha Vencimiento"]}<br>
@@ -145,18 +147,18 @@ formulario_consulta.addEventListener("submit", function consultar(e) {
           <span class="text-danger">No Identificacion:</span> ${elemento["No Identificacion"]}<br>
           <span class="text-danger">Periodo Inicial Deuda:</span> ${elemento["Periodo Inicial Deuda"]}<br>
           <span class="text-danger">Porpietario:</span> ${elemento["Porpietario"]}<br>
-          <span class="text-danger">Predial 2023:</span> ${elemento["Predial 2023"]}<br>
+          <span class="text-danger">Predial 2023:</span> ${parseInt(elemento["Predial 2023"]).toLocaleString()}<br>
           <span class="text-danger">Tipo Documento:</span> ${elemento["Tipo Documento"]}<br>
-          <span class="text-danger">Total 2018:</span> ${elemento["Total 2018"]}<br>
-          <span class="text-danger">Total 2019:</span> ${elemento["Total 2019"]}<br>
-          <span class="text-danger">Total 2020:</span> ${elemento["Total 2020"]}<br>
-          <span class="text-danger">Total 2021:</span> ${elemento["Total 2021"]}<br>
-          <span class="text-danger">Total 2022:</span> ${elemento["Total 2022"]}<br>
-          <span class="text-danger">Total 2023:</span> ${elemento["Total 2023"]}<br>
-          <span class="text-danger">Total Anterior 2018:</span> ${elemento["Total Anterior 2018"]}<br>
+          <span class="text-danger">Total 2018:</span> ${parseInt(elemento["Total 2018"]).toLocaleString()}<br>
+          <span class="text-danger">Total 2019:</span> ${parseInt(elemento["Total 2019"]).toLocaleString()}<br>
+          <span class="text-danger">Total 2020:</span> ${parseInt(elemento["Total 2020"]).toLocaleString()}<br>
+          <span class="text-danger">Total 2021:</span> ${parseInt(elemento["Total 2021"]).toLocaleString()}<br>
+          <span class="text-danger">Total 2022:</span> ${parseInt(elemento["Total 2022"]).toLocaleString()}<br>
+          <span class="text-danger">Total 2023:</span> ${parseInt(elemento["Total 2023"]).toLocaleString()}<br>
+          <span class="text-danger">Total Anterior 2018:</span> ${parseInt(elemento["Total Anterior 2018"]).toLocaleString()}<br>
           <span class="text-danger">Uso:</span> ${elemento["Uso"]}<br>
-          <span class="text-danger">Valor a Pagar Periodo:</span> ${elemento["Valor a Pagar Periodo"]}<br>
-          <span class="text-danger">Valor a Pagar Vigencia:</span> ${elemento["Valor a Pagar Vigencia"]}<br>
+          <span class="text-danger">Valor a Pagar Periodo:</span> ${parseInt(elemento["Valor a Pagar Periodo"]).toLocaleString()}<br>
+          <span class="text-danger">Valor a Pagar Vigencia:</span> ${parseInt(elemento["Valor a Pagar Vigencia"]).toLocaleString()}<br>
           </address>
       </div>
           `;
