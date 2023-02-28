@@ -38,22 +38,139 @@ formulario_consulta.addEventListener("submit", function consultar(e) {
       </p>`;
       }
 
-      //Imprime los resultados de pandemia
 
-      if (data.resultados.pandema > 0) {
-        let datos = data.pandema;
+
+      //Meter los telefonos de Permisos
+      if (data.resultados.permisos > 0) {
+        let datos = data.permisos
+        let datosDivTelefonos = document.querySelector("#resultados_telefonos");
+        let datosDivDirecciones = document.querySelector("#resultados_direcciones");
         datos.map((elemento) => {
-          let datosDiv = document.querySelector("#resultados_pandemia");
-          datosDiv.innerHTML = `
-            <div>
-              <p>Apellidos: ${elemento.apellidos}</p>
-              <p>Cédula: ${elemento.cedula}</p>
-              <p>Dirección de residencia: ${elemento.direccion_residencia}</p>
-              <p>Nombres: ${elemento.nombres}</p>
-              <p>Teléfono: ${elemento.telefono}</p>
+          datosDivTelefonos.innerHTML += `
+            <div class="inbox-item" >
+              <p class="inbox-item-author">Telefono: ${elemento.telefono}</p>
+            </div>
+          `;
+        });
+        datos.map((elemento) => {
+          datosDivDirecciones.innerHTML += `
+            <div class="inbox-item">
+              <p class="inbox-item-author">Dirección: ${elemento.direccion_residencia}</p>
             </div>
           `;
         });
       }
+
+
+      //Meter los telefonos de Emsanar
+      if (data.resultados.emsanar > 0) {
+        let datos = data.emsanar
+        let datosDivTelefonos = document.querySelector("#resultados_telefonos");
+        let datosDivDirecciones = document.querySelector("#resultados_direcciones");
+        datos.map((elemento) => {
+          datosDivTelefonos.innerHTML += `
+            <div class="inbox-item" >
+              <p class="inbox-item-author">Telefono: ${elemento.TELEFONO}</p>
+            </div>
+          `;
+        });
+        datos.map((elemento) => {
+          datosDivDirecciones.innerHTML += `
+            <div class="inbox-item">
+              <p class="inbox-item-author">Dirección: ${elemento.DIRECCION}</p>
+            </div>
+          `;
+        });
+      }
+
+
+
+      //Meter los telefonos de Pandemia
+      if (data.resultados.pandemia > 0) {
+        let datos = data.pandemia
+        let datosDivTelefonos = document.querySelector("#resultados_telefonos");
+        let datosDivDirecciones = document.querySelector("#resultados_direcciones");
+        datos.map((elemento) => {
+          datosDivTelefonos.innerHTML += `
+            <div class="inbox-item" >
+              <p class="inbox-item-author">Telefono: ${elemento.telefono}</p>
+            </div>
+          `;
+        });
+        datos.map((elemento) => {
+          datosDivDirecciones.innerHTML += `
+            <div class="inbox-item">
+              <p class="inbox-item-author">Dirección: ${elemento.direccion}</p>
+            </div>
+          `;
+        });
+      }
+
+
+      //Meter los resultados de sus propiedades
+      if (data.resultados.predial > 0) {
+
+        //Formatear los valores
+        const opcionesFormato = {
+          style: "currency",
+          currency: "EUR",
+          minimumFractionDigits: 2,
+          useGrouping: true,
+          currencyDisplay: "symbol",
+        };
+
+        let contador_propiedades = 0;
+        let datos = data.predial
+        let datosDivPropiedades = document.querySelector("#resultados_propiedades");
+        datos.map((elemento) => {
+
+          let avaluo = elemento["Avaluo Actual"].toLocaleString("es-ES",opcionesFormato);
+
+          datosDivPropiedades.innerHTML += `
+          <div class="col-6">
+          <h4>Datos de la Propiedad ${++contador_propiedades}</h4>
+          <address>
+          <span class="text-danger">Area Construida:</span> ${elemento["Area Construida"]}<br>
+          <span class="text-danger">Area Metros:</span> ${elemento["Area Metros"]}<br>
+          <span class="text-danger">Avaluo Actual:</span> ${avaluo}<br>
+          <span class="text-danger">Descuento Periodo:</span> ${elemento["Descuento Periodo"].toLocaleString()}<br>
+          <span class="text-danger">Descuento Vigencia:</span> ${elemento["Descuento Vigencia"].toLocaleString()}<br>
+          <span class="text-danger">Deuda Periodo:</span> ${elemento["Deuda Periodo"].toLocaleString()}<br>
+          <span class="text-danger">Deuda Vigencia:</span> ${elemento["Deuda Vigencia"]}<br>
+          <span class="text-danger">Direccion:</span> ${elemento["Direccion"]}<br>
+          <span class="text-danger">Fecha Elaboracion:</span> ${elemento["Fecha Elaboracion"]}<br>
+          <span class="text-danger">Fecha Vencimiento:</span> ${elemento["Fecha Vencimiento"]}<br>
+          <span class="text-danger">Ficha Catastral:</span> ${elemento["Ficha Catastral"]}<br>
+          <span class="text-danger">No Factura:</span> ${elemento["No Factura"]}<br>
+          <span class="text-danger">No Identificacion:</span> ${elemento["No Identificacion"]}<br>
+          <span class="text-danger">Periodo Inicial Deuda:</span> ${elemento["Periodo Inicial Deuda"]}<br>
+          <span class="text-danger">Porpietario:</span> ${elemento["Porpietario"]}<br>
+          <span class="text-danger">Predial 2023:</span> ${elemento["Predial 2023"]}<br>
+          <span class="text-danger">Tipo Documento:</span> ${elemento["Tipo Documento"]}<br>
+          <span class="text-danger">Total 2018:</span> ${elemento["Total 2018"]}<br>
+          <span class="text-danger">Total 2019:</span> ${elemento["Total 2019"]}<br>
+          <span class="text-danger">Total 2020:</span> ${elemento["Total 2020"]}<br>
+          <span class="text-danger">Total 2021:</span> ${elemento["Total 2021"]}<br>
+          <span class="text-danger">Total 2022:</span> ${elemento["Total 2022"]}<br>
+          <span class="text-danger">Total 2023:</span> ${elemento["Total 2023"]}<br>
+          <span class="text-danger">Total Anterior 2018:</span> ${elemento["Total Anterior 2018"]}<br>
+          <span class="text-danger">Uso:</span> ${elemento["Uso"]}<br>
+          <span class="text-danger">Valor a Pagar Periodo:</span> ${elemento["Valor a Pagar Periodo"]}<br>
+          <span class="text-danger">Valor a Pagar Vigencia:</span> ${elemento["Valor a Pagar Vigencia"]}<br>
+          </address>
+      </div>
+          `;
+        });
+        datos.map((elemento) => {
+          datosDivDirecciones.innerHTML += `
+            <div class="inbox-item">
+              <p class="inbox-item-author">Dirección: ${elemento.direccion}</p>
+            </div>
+          `;
+        });
+      }
+
+
+
     });
 });

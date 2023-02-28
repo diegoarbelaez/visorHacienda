@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         //Busqueda en la BD de pandemia
-        $sentencia1 = "select cedula,nombres, apellidos, telefono from ciudadano where cedula = '$cedula_consultar'";
+        $sentencia1 = "select cedula,nombres, apellidos, telefono, casa.direccion from ciudadano inner join casa on ciudadano.fk_id_casa = casa.id_casa where cedula = '$cedula_consultar'";
         $resultado1 = mysqli_query($con, $sentencia1);
 
         if (mysqli_num_rows($resultado1) > 0) {
