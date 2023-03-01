@@ -21,7 +21,7 @@
                 <li>
                     <a href="listado.php">
                         <i class="fe-users"></i>
-                        <span> Buscador </span>
+                        <span> Listados </span>
                     </a>
                 </li>
 
