@@ -81,7 +81,7 @@ include("backend/conexion.php");
 
 
 
-                                        $sentencia_consulta = 'SELECT `id`, `No Identificacion`, `Porpietario`,`Direccion`, `Ficha  Catastral`, `Total 2018`,`Total 2019`,`Total 2020`,`Total 2021`,`Total 2022`,`Total 2023`,`Valor a Pagar Vigencia`,`Fecha Vencimiento` FROM ' . $nombre_tabla;
+                                        $sentencia_consulta = 'SELECT `id`, `No Identificacion`, `Porpietario`,`Direccion`, `Ficha  Catastral`, `Total 2018`,`Total 2019`,`Total 2020`,`Total 2021`,`Total 2022`,`Total 2023`,`Valor a Pagar Vigencia`,`Fecha Vencimiento` FROM ' . $nombre_tabla . ' order by `Valor a Pagar Vigencia` desc';
 
                                         $sql = mysqli_query($con, $sentencia_consulta);
                                         if (mysqli_num_rows($sql) == 0) {
@@ -98,7 +98,7 @@ include("backend/conexion.php");
                                         <?php
                                         } else {
                                             $iniciar = ($_GET['pagina'] - 1) * $elementosxpagina;
-                                            $sql = mysqli_query($con, 'SELECT `id`, `No Identificacion`, `Porpietario`,`Direccion`, `Ficha  Catastral`, `Total 2018`,`Total 2019`,`Total 2020`,`Total 2021`,`Total 2022`,`Total 2023`,`Valor a Pagar Vigencia`,`Fecha Vencimiento` FROM ' . $nombre_tabla . ' order by id ASC LIMIT ' . $iniciar . ',' . $elementosxpagina);
+                                            $sql = mysqli_query($con, 'SELECT `id`, `No Identificacion`, `Porpietario`,`Direccion`, `Ficha  Catastral`, `Total 2018`,`Total 2019`,`Total 2020`,`Total 2021`,`Total 2022`,`Total 2023`,`Valor a Pagar Vigencia`,`Fecha Vencimiento` FROM ' . $nombre_tabla . ' order by `Valor a Pagar Vigencia` desc LIMIT ' . $iniciar . ',' . $elementosxpagina);
                                             while ($row = mysqli_fetch_assoc($sql)) {
 
                                                

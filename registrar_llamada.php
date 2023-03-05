@@ -102,6 +102,14 @@ include("backend/conexion.php");
 
                     </div>
 
+                    <?php
+                    include("datos_propietario.php");
+                    ?>
+
+                    <?php
+                    include("eventos.php");
+                    ?>
+
 
                 </div> <!-- end container-fluid -->
 
